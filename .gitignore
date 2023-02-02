@@ -65,3 +65,6 @@ buck-out/
 
 # env
 .env
+
+# coverage
+coverage
