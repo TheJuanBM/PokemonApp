@@ -1,38 +1,49 @@
+interface Name {
+  name: string
+}
+
 export interface ResponseApiPokemon {
   next: string
-  count: number
-  previous: null
   results: Result[]
 }
 
-interface Result {
+interface Result extends Name {
   url: string
-  name: string
 }
 
-export interface PokemonInit {
+export interface PokemonInit extends Name {
   id: string
-  name: string
   image: string
 }
 
 export interface DetailPokemon {
   id: string
+  weight: number
+  height: number
   types: string[]
   abilities: string[]
+  // generation: string
 }
 
 export interface DetailApiResponse {
   id: number
-  types: Array<{ type: Species }>
-  abilities: { ability: Species }[]
-}
-
-interface Species {
-  name: string
+  weight: number
+  height: number
+  types: {
+    type: Name
+  }[]
+  abilities: {
+    ability: Name
+  }[]
 }
 
 export interface JoinPokemonDataParams {
   pokemonList: PokemonInit[]
   pokemonDetail: DetailPokemon[]
+}
+
+export interface PokemonSpecieResponse {
+  color: Name
+  generation: Name
+  egg_groups: Name[]
 }

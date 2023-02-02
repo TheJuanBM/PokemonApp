@@ -3,12 +3,13 @@ import React from 'react'
 import ImageColors from 'react-native-image-colors'
 
 import { Card } from '../src/pokemon/ui/components'
-import { mockPokemon } from '../__mocks__/pokemon.mock'
+import { mockGetColors } from '../__mocks__/imageColors.mocks'
+import { mockPokemon } from '../__mocks__/pokemon.mocks'
 
-beforeEach(() => jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(jest.fn)))
+beforeEach(() => jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(mockGetColors)))
 
 describe('Test Card', () => {
-  it('Render okay', () => {
+  it('Render okay in android', () => {
     render(<Card pokemon={mockPokemon} />)
 
     expect(screen.getByTestId('card')).toBeDefined()

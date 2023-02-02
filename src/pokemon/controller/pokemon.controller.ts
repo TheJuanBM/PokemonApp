@@ -1,9 +1,8 @@
 import { IMAGE_POKEMON_URL, POKEMON_URL } from '@env'
 
 import { detailPokemonDto } from '../dto/detailPokemon.dto'
-import { DetailApiResponse, DetailPokemon, JoinPokemonDataParams, ResponseApiPokemon } from '../interfaces/pokemon'
-
-import Pokemon from '../model/pokemon.model'
+import { specieDto } from '../dto/specie.dto'
+import { DetailApiResponse, PokemonSpecieResponse, ResponseApiPokemon } from '../interfaces/pokemon'
 import PokemonService from '../service/pokemon.service'
 
 export default class PokemonController {
@@ -15,11 +14,14 @@ export default class PokemonController {
     const mapResultPokemons = data.results.map(async pokemon => {
       const pokemonId = pokemon.url.split('/')[6]
 
-      const detail = await this.getDetailPokemon(pokemonId)
+      const detail = await this.getPokemonDetailById(pokemonId)
+
+      const specie = await this.getSpecieById(pokemonId)
 
       return {
         name: pokemon.name,
         image: `${IMAGE_POKEMON_URL}/${pokemonId}.png`,
+        ...specie,
         ...detail
       }
     })
@@ -38,22 +40,17 @@ export default class PokemonController {
     }
   }
 
-  public async getDetailPokemon(pokemonId: string) {
-    const { data } = await this.PokemonService.getData<DetailApiResponse>(`${POKEMON_URL}/${pokemonId}`)
+  private async getPokemonDetailById(pokemonId: string) {
+    const { data } = await this.PokemonService.getData<DetailApiResponse>(`${POKEMON_URL}/pokemon/${pokemonId}`)
 
     return detailPokemonDto(data)
   }
 
-  public joinPokemonData({ pokemonList, pokemonDetail }: JoinPokemonDataParams): Pokemon[] {
-    const pokemonWhitDetail = pokemonList.map(pokemon => {
-      const findPokemonDetail = pokemonDetail.find(({ id }) => id === pokemon.id) as DetailPokemon
+  private async getSpecieById(pokemonId: string) {
+    const { data } = await this.PokemonService.getData<PokemonSpecieResponse>(
+      `${POKEMON_URL}/pokemon-species/${pokemonId}`
+    )
 
-      return {
-        ...pokemon,
-        ...findPokemonDetail
-      }
-    })
-
-    return pokemonWhitDetail
+    return specieDto(data)
   }
 }

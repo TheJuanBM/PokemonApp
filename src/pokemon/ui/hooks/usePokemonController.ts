@@ -10,7 +10,7 @@ export function usePokemonController() {
   const [isLoading, setIsLoading] = useState(true)
   const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
-  const urlPokemon = useRef(`${POKEMON_URL}?limit=10`)
+  const urlPokemon = useRef(`${POKEMON_URL}/pokemon?limit=10`)
 
   const getPokemons = async () => {
     setIsLoading(true)

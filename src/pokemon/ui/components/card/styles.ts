@@ -35,16 +35,20 @@ export const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   TypesText: {
+    fontSize: 12,
     marginRight: 5,
-    borderWidth: 1,
     borderRadius: 50,
+    paddingVertical: 3,
     paddingHorizontal: 10,
+    color: 'black',
+    fontWeight: '400',
     textAlign: 'center',
-    borderStyle: 'solid',
-    textTransform: 'capitalize'
+    textTransform: 'capitalize',
+    backgroundColor: 'rgba(0, 0, 0, 0.07)'
   },
   BoldText: {
     color: 'black',
-    fontWeight: '600'
+    fontWeight: '600',
+    textTransform: 'capitalize'
   }
 })

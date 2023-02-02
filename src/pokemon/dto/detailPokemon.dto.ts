@@ -1,13 +1,15 @@
 import { DetailApiResponse, DetailPokemon } from '../interfaces/pokemon'
 
-export function detailPokemonDto({ types, abilities, id }: DetailApiResponse): DetailPokemon {
-  const typeFormat = types.map(({ type }) => type.name)
+export function detailPokemonDto(pokemonResponse: DetailApiResponse): DetailPokemon {
+  const typeFormat = pokemonResponse.types.map(({ type }) => type.name)
 
-  const abilitiesFormat = abilities.map(({ ability }) => ability.name)
+  const abilitiesFormat = pokemonResponse.abilities.map(({ ability }) => ability.name)
 
   return {
-    id: String(id),
+    id: String(pokemonResponse.id),
     types: typeFormat,
-    abilities: abilitiesFormat
+    abilities: abilitiesFormat,
+    weight: pokemonResponse.weight,
+    height: pokemonResponse.height
   }
 }
