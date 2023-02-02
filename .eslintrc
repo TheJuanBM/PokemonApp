@@ -20,6 +20,7 @@
     "ecmaFeatures": { "jsx": true }
   },
   "rules": {
+    "global-require": "off",
     "react/display-name": "off",
     "import/no-unresolved": "off",
     "class-methods-use-this": "off",

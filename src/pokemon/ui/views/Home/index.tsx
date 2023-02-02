@@ -1,6 +1,6 @@
-import { ActivityIndicator, FlatList, SafeAreaView, View } from 'react-native'
+import { FlatList, SafeAreaView, View } from 'react-native'
 
-import { Card, HeaderList } from '../../components'
+import { Card, HeaderList, Loading } from '../../components'
 import { usePokemonController } from '../../hooks'
 import { StylesHome } from './styles'
 
@@ -19,12 +19,8 @@ export default function Home() {
         onEndReached={pokemonController.getPokemons}
         renderItem={({ item }) => <Card pokemon={item} />}
         contentContainerStyle={StylesHome.ContentContainerStyle}
+        ListFooterComponent={!pokemonController.isLoading ? null : <Loading />}
         ItemSeparatorComponent={() => <View testID="separator" style={StylesHome.ItemSeparatorComponent} />}
-        ListFooterComponent={
-          !pokemonController.isLoading ? null : (
-            <ActivityIndicator testID="loading" style={StylesHome.ActivityIndicator} size={20} color="grey" />
-          )
-        }
       />
     </SafeAreaView>
   )

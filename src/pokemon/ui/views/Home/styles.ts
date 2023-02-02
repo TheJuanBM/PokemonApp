@@ -2,6 +2,7 @@ import { StyleSheet } from 'react-native'
 
 export const StylesHome = StyleSheet.create({
   Wrapper: {
+    flex: 1,
     backgroundColor: 'white'
   },
   ContentContainerStyle: {

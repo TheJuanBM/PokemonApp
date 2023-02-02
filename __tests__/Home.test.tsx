@@ -12,9 +12,10 @@ import {
 } from '../__mocks__/pokemonList.mocks'
 
 beforeEach(() => {
-  jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
   jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(jest.fn))
 })
+
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 afterEach(() => mockAxios.reset())
 

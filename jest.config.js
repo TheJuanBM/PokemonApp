@@ -1,9 +1,12 @@
 module.exports = {
   collectCoverage: true,
-  coverageReporters: ['html'],
+  testEnvironment: 'jsdom',
   preset: '@testing-library/react-native',
+  coverageReporters: ['html'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   transformIgnorePatterns: ['node_modules/(?!@react-native|react-native)'],
-  moduleNameMapper: { '\\.svg': '<rootDir>/testing/svgMock.js' }
+  moduleNameMapper: {
+    '\\.svg': '<rootDir>/testing/svgMock.js'
+  }
 }
