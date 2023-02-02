@@ -1,5 +1,4 @@
 import { render, screen } from '@testing-library/react-native'
-import React from 'react'
 import ImageColors from 'react-native-image-colors'
 
 import { Card } from '../src/pokemon/ui/components'

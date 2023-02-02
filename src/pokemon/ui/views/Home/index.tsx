@@ -1,6 +1,6 @@
 import { ActivityIndicator, FlatList, SafeAreaView, View } from 'react-native'
 
-import { Card } from '../../components'
+import { Card, HeaderList } from '../../components'
 import { usePokemonController } from '../../hooks'
 import { StylesHome } from './styles'
 
@@ -8,7 +8,8 @@ export default function Home() {
   const pokemonController = usePokemonController()
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={StylesHome.Wrapper}>
+      <HeaderList />
       <FlatList
         testID="pokemonList"
         onEndReachedThreshold={0.4}
