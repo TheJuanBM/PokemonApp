@@ -80,6 +80,32 @@ describe('Test Home', () => {
     expect(screen.getAllByTestId('card')).toHaveLength(2)
   })
 
+  test('Should show empty state', async () => {
+    render(<Home />)
+
+    expect(screen.getByTestId('loading')).toBeDefined()
+
+    mockAxios.mockResponse({ data: mockPokemonDataResponse })
+
+    await waitFor(() => {
+      mockAxios.mockResponse({ data: mockDetailPokemon })
+      mockAxios.mockResponse({ data: mockDetailPokemonTwo })
+    })
+
+    await waitFor(() => {
+      mockAxios.mockResponse({ data: mockPokemonSpecies })
+      mockAxios.mockResponse({ data: mockPokemonSpeciesTwo })
+    })
+
+    await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
+
+    fireEvent.changeText(screen.getByPlaceholderText(/Search you pokemon/i), 'pikachu')
+
+    fireEvent.press(screen.getByTestId('searchButton'))
+
+    expect(screen.getByText(/No results found/i)).toBeDefined()
+  })
+
   test.each([
     ['bug', 'Egg Groups'],
     ['cave', 'Habitat'],

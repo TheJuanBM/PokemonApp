@@ -29,7 +29,7 @@ export default function Home() {
         onEndReached={!pokemonController.isSearching ? pokemonController.getPokemons : null}
         ItemSeparatorComponent={() => <View testID="separator" style={StylesHome.ItemSeparatorComponent} />}
         ListEmptyComponent={() =>
-          pokemonController ? null : <Text style={StylesHome.TextNoFound}>No results found</Text>
+          pokemonController.isLoading ? null : <Text style={StylesHome.TextNoFound}>No results found</Text>
         }
       />
     </SafeAreaView>
