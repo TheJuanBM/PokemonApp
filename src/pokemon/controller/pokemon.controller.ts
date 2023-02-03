@@ -2,11 +2,18 @@ import { IMAGE_POKEMON_URL, POKEMON_URL } from '@env'
 
 import { detailPokemonDto } from '../dto/detailPokemon.dto'
 import { specieDto } from '../dto/specie.dto'
-import { DetailApiResponse, PokemonSpecieResponse, ResponseApiPokemon } from '../interfaces/pokemon'
+import {
+  DetailApiResponse,
+  FilterPokemonParams,
+  ItemsToFilter,
+  PokemonSpecieResponse,
+  ResponseApiPokemon
+} from '../interfaces/pokemon'
+import Pokemon from '../model/pokemon.model'
 import PokemonService from '../service/pokemon.service'
 
 export default class PokemonController {
-  PokemonService = new PokemonService()
+  private readonly PokemonService = new PokemonService()
 
   public async getPokemons(endPoint: string) {
     const { data } = await this.PokemonService.getData<ResponseApiPokemon>(endPoint)
@@ -52,5 +59,29 @@ export default class PokemonController {
     )
 
     return specieDto(data)
+  }
+
+  public filterPokemon({ pokemons, filters }: FilterPokemonParams) {
+    const itemsToFilter: ItemsToFilter = {
+      name: search => pokemons.filter(({ name }) => name.includes(search)),
+      color: search => pokemons.filter(({ color }) => color.includes(search)),
+      weight: search => pokemons.filter(({ weight }) => String(weight) === search),
+      height: search => pokemons.filter(({ height }) => String(height) === search),
+      habitat: search => pokemons.filter(({ habitat }) => habitat.includes(search)),
+      eggGroups: search => pokemons.filter(({ eggGroups }) => eggGroups.includes(search)),
+      types: search => {
+        return pokemons
+          .map(pokemon => {
+            const pokemonFiltered = pokemon.types.filter(type => type.includes(search))
+
+            if (!pokemonFiltered.length) return null
+
+            return pokemon
+          })
+          .filter(item => item) as Pokemon[]
+      }
+    }
+
+    return itemsToFilter[filters.type](filters.search.toLocaleLowerCase())
   }
 }

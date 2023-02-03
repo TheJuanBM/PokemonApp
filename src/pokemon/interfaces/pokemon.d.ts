@@ -1,3 +1,5 @@
+import Pokemon from '../model/pokemon.model'
+
 interface Name {
   name: string
 }
@@ -21,8 +23,6 @@ export interface DetailPokemon {
   weight: number
   height: number
   types: string[]
-  abilities: string[]
-  // generation: string
 }
 
 export interface DetailApiResponse {
@@ -31,9 +31,6 @@ export interface DetailApiResponse {
   height: number
   types: {
     type: Name
-  }[]
-  abilities: {
-    ability: Name
   }[]
 }
 
@@ -44,6 +41,23 @@ export interface JoinPokemonDataParams {
 
 export interface PokemonSpecieResponse {
   color: Name
+  habitat: Name
   generation: Name
   egg_groups: Name[]
+}
+
+export type FilterSearch = 'name' | 'types' | 'color' | 'habitat' | 'weight' | 'height' | 'eggGroups'
+
+export interface FormSearchValues {
+  search: string
+  type: FilterSearch
+}
+
+export interface FilterPokemonParams {
+  pokemons: Pokemon[]
+  filters: FormSearchValues
+}
+
+export type ItemsToFilter = {
+  [key in FilterSearch]: (search: string) => Pokemon[]
 }

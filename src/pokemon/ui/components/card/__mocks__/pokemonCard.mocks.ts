@@ -6,7 +6,7 @@ export const mockGetColors = (): Promise<ImageColorsResult> => {
   })
 }
 
-export const mockPokemon = {
+export const mockPokemonCard = {
   id: '1',
   color: 'red',
   name: 'Bulbasaur',

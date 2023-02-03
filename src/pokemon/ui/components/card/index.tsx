@@ -21,7 +21,7 @@ export function Card({ pokemon }: CardProps) {
         </Text>
         <View style={styles.TypesContainer}>
           <Text style={styles.BoldText}>Type: </Text>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             {pokemon.types.map(type => (
               <Text testID="typeItem" style={styles.TypesText} key={type}>
                 {type}
@@ -30,14 +30,10 @@ export function Card({ pokemon }: CardProps) {
           </ScrollView>
         </View>
         <View style={styles.TypesContainer}>
-          <Text style={styles.BoldText}>Ability: </Text>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            {pokemon.abilities.map(abilitie => (
-              <Text testID="abilitiItem" style={styles.TypesText} key={abilitie}>
-                {abilitie}
-              </Text>
-            ))}
-          </ScrollView>
+          <Text style={styles.BoldText}>Habitat: </Text>
+          <Text testID="habitatItem" style={styles.TypesText}>
+            {pokemon.habitat}
+          </Text>
         </View>
         <Text style={styles.BoldText}>{`\n~ ${pokemon.generation} ~`}</Text>
       </View>

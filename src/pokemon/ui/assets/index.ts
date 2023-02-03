@@ -1,5 +1,7 @@
-import Collection from './collection.svg'
+import Close from './Close.svg'
+import Search from './Search.svg'
 
 export const Icons = {
-  Collection
+  Close,
+  Search
 }

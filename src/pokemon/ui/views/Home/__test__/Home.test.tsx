@@ -2,14 +2,14 @@ import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@
 import mockAxios from 'jest-mock-axios'
 import ImageColors from 'react-native-image-colors'
 
-import Home from '../src/pokemon/ui/views/Home'
+import Home from '..'
 import {
   mockDetailPokemon,
   mockDetailPokemonTwo,
   mockPokemonDataResponse,
   mockPokemonSpecies,
   mockPokemonSpeciesTwo
-} from '../__mocks__/pokemonList.mocks'
+} from '../__mocks__/pokemonHome.mocks'
 
 beforeEach(() => {
   jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(jest.fn))

@@ -3,10 +3,13 @@ import { TextInput } from 'react-native'
 
 import { styles } from './styles'
 
-export function InputSearch() {
-  const [search, setSearch] = useState('')
+interface InputSearchProps {
+  value: string
+  onChangeText: (value: string) => void
+}
 
+export function InputSearch({ value, onChangeText }: InputSearchProps) {
   return (
-    <TextInput value={search} style={styles.TextInput} onChangeText={setSearch} placeholder="Search you pokemon..." />
+    <TextInput value={value} style={styles.TextInput} onChangeText={onChangeText} placeholder="Search you pokemon..." />
   )
 }

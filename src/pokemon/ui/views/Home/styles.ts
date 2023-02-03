@@ -10,10 +10,19 @@ export const StylesHome = StyleSheet.create({
     paddingBottom: 16,
     paddingHorizontal: 16
   },
+  TextNoFound: {
+    textAlign: 'center'
+  },
   ItemSeparatorComponent: {
     paddingVertical: 8
   },
   ActivityIndicator: {
     height: 100
+  },
+  ContainerHeaderList: {
+    paddingTop: 16,
+    paddingBottom: 10,
+    paddingHorizontal: 16,
+    flexDirection: 'row'
   }
 })

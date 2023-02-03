@@ -3,12 +3,12 @@ export default class Pokemon {
   name: string
   image: string
   color: string
+  habitat: string
   generation: string
   weight: number
   height: number
   types: string[]
   eggGroups: string[]
-  abilities: string[]
 
   constructor(pokemon: Pokemon) {
     this.id = pokemon.id
@@ -18,8 +18,8 @@ export default class Pokemon {
     this.image = pokemon.image
     this.height = pokemon.height
     this.weight = pokemon.weight
+    this.habitat = pokemon.habitat
     this.eggGroups = pokemon.eggGroups
-    this.abilities = pokemon.abilities
     this.generation = pokemon.generation
   }
 }

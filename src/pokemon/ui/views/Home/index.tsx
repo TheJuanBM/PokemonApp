@@ -1,7 +1,8 @@
-import { FlatList, SafeAreaView, View } from 'react-native'
+import { FlatList, SafeAreaView, Text, View } from 'react-native'
 
-import { Card, HeaderList, Loading } from '../../components'
+import { Card, Loading } from '../../components'
 import { usePokemonController } from '../../hooks'
+import { FormSearch } from '../../module'
 import { StylesHome } from './styles'
 
 export default function Home() {
@@ -9,18 +10,27 @@ export default function Home() {
 
   return (
     <SafeAreaView style={StylesHome.Wrapper}>
-      <HeaderList />
+      <View style={StylesHome.ContainerHeaderList}>
+        <FormSearch
+          onSearch={pokemonController.searchPokemon}
+          clearSearch={pokemonController.clearSearch}
+          isSearching={pokemonController.isSearching}
+        />
+      </View>
       <FlatList
         testID="pokemonList"
         onEndReachedThreshold={0.4}
         keyExtractor={({ id }) => id}
         data={pokemonController.pokemons}
         showsVerticalScrollIndicator={false}
-        onEndReached={pokemonController.getPokemons}
         renderItem={({ item }) => <Card pokemon={item} />}
         contentContainerStyle={StylesHome.ContentContainerStyle}
         ListFooterComponent={!pokemonController.isLoading ? null : <Loading />}
+        onEndReached={!pokemonController.isSearching ? pokemonController.getPokemons : null}
         ItemSeparatorComponent={() => <View testID="separator" style={StylesHome.ItemSeparatorComponent} />}
+        ListEmptyComponent={() =>
+          pokemonController ? null : <Text style={StylesHome.TextNoFound}>No results found</Text>
+        }
       />
     </SafeAreaView>
   )
