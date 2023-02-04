@@ -46,6 +46,16 @@ export interface PokemonSpecieResponse {
   egg_groups: Name[]
 }
 
+type EvolvesTo = {
+  species: Name
+}
+
+export interface EvolutionPokemonResponse {
+  chain: {
+    evolves_to: EvolvesTo[]
+  }
+}
+
 export type FilterSearch = 'name' | 'types' | 'color' | 'habitat' | 'weight' | 'height' | 'eggGroups'
 
 export interface FormSearchValues {

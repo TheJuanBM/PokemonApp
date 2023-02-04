@@ -1,1 +1,1 @@
-export * from './useGetDetailController'
+export * from './useDetailController'

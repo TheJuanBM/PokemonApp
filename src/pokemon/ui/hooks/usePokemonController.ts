@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import PokemonController from '../../controller/pokemon.controller'
 import Pokemon from '../../model/pokemon.model'
+import { useCatchPokemonController } from './useCatchPokemonController'
 import { useSearchPokemonsController } from './useSearchPokemonsController'
 
 const pokemonInstance = new PokemonController()
@@ -13,6 +14,7 @@ export function usePokemonController() {
 
   const urlPokemon = useRef(`${POKEMON_URL}/pokemon?limit=50`)
 
+  const catchPokemonController = useCatchPokemonController()
   const searchPokemonsController = useSearchPokemonsController({ pokemons, pokemonInstance })
 
   async function getPokemons() {
@@ -32,5 +34,10 @@ export function usePokemonController() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return { isLoading, getPokemons, ...searchPokemonsController }
+  return {
+    isLoading,
+    getPokemons,
+    catchPokemonController,
+    ...searchPokemonsController
+  }
 }

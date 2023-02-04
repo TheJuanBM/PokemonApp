@@ -5,6 +5,7 @@ export default class Pokemon {
   color: string
   habitat: string
   generation: string
+  evolutionPokemon: string
   weight: number
   height: number
   types: string[]
@@ -21,5 +22,6 @@ export default class Pokemon {
     this.habitat = pokemon.habitat
     this.eggGroups = pokemon.eggGroups
     this.generation = pokemon.generation
+    this.evolutionPokemon = pokemon.evolutionPokemon
   }
 }

@@ -6,7 +6,7 @@ export const mockGetColors = (): Promise<ImageColorsResult> => {
   })
 }
 
-export const mockPokemonCard = {
+export const mockPokemon = {
   id: '1',
   color: 'red',
   name: 'Bulbasaur',
@@ -16,5 +16,14 @@ export const mockPokemonCard = {
   types: ['grass', 'position'],
   eggGroups: ['monster', 'plant'],
   height: 5,
-  weight: 17
+  weight: 17,
+  evolutionPokemon: 'ivysaur'
+}
+
+export const mockCatchPokemonController = {
+  capturedPokemons: [],
+  existPokemonById: jest.fn(),
+  existPokemonByType: jest.fn(),
+  handlePokemonsState: jest.fn(),
+  existPokemonByEvolutionAndId: jest.fn()
 }

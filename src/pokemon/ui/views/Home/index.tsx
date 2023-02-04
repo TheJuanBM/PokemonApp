@@ -23,11 +23,13 @@ export default function Home() {
         keyExtractor={({ id }) => id}
         data={pokemonController.pokemons}
         showsVerticalScrollIndicator={false}
-        renderItem={({ item }) => <Card pokemon={item} />}
         contentContainerStyle={StylesHome.ContentContainerStyle}
         ListFooterComponent={!pokemonController.isLoading ? null : <Loading />}
         onEndReached={!pokemonController.isSearching ? pokemonController.getPokemons : null}
         ItemSeparatorComponent={() => <View testID="separator" style={StylesHome.ItemSeparatorComponent} />}
+        renderItem={({ item }) => (
+          <Card pokemon={item} catchPokemonController={pokemonController.catchPokemonController} />
+        )}
         ListEmptyComponent={() =>
           pokemonController.isLoading ? null : <Text style={StylesHome.TextNoFound}>No results found</Text>
         }

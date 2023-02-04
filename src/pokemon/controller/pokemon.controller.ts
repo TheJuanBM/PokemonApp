@@ -1,9 +1,11 @@
 import { IMAGE_POKEMON_URL, POKEMON_URL } from '@env'
 
 import { detailPokemonDto } from '../dto/detailPokemon.dto'
+import { evolutionPokemonDto } from '../dto/evolutionPokemonDto'
 import { specieDto } from '../dto/specie.dto'
 import {
   DetailApiResponse,
+  EvolutionPokemonResponse,
   FilterPokemonParams,
   ItemsToFilter,
   PokemonSpecieResponse,
@@ -25,7 +27,10 @@ export default class PokemonController {
 
       const specie = await this.getSpecieById(pokemonId)
 
+      const evolutionPokemon = await this.getEvolutionPokemon(pokemonId)
+
       return {
+        evolutionPokemon,
         name: pokemon.name,
         image: `${IMAGE_POKEMON_URL}/${pokemonId}.png`,
         ...specie,
@@ -47,28 +52,14 @@ export default class PokemonController {
     }
   }
 
-  private async getPokemonDetailById(pokemonId: string) {
-    const { data } = await this.PokemonService.getData<DetailApiResponse>(`${POKEMON_URL}/pokemon/${pokemonId}`)
-
-    return detailPokemonDto(data)
-  }
-
-  private async getSpecieById(pokemonId: string) {
-    const { data } = await this.PokemonService.getData<PokemonSpecieResponse>(
-      `${POKEMON_URL}/pokemon-species/${pokemonId}`
-    )
-
-    return specieDto(data)
-  }
-
   public filterPokemon({ pokemons, filters }: FilterPokemonParams) {
     const itemsToFilter: ItemsToFilter = {
-      name: search => pokemons.filter(({ name }) => name.includes(search)),
-      color: search => pokemons.filter(({ color }) => color.includes(search)),
       weight: search => pokemons.filter(({ weight }) => String(weight) === search),
       height: search => pokemons.filter(({ height }) => String(height) === search),
-      habitat: search => pokemons.filter(({ habitat }) => habitat.includes(search)),
       eggGroups: search => pokemons.filter(({ eggGroups }) => eggGroups.includes(search)),
+      name: search => pokemons.filter(({ name }) => name.toLocaleLowerCase().includes(search)),
+      color: search => pokemons.filter(({ color }) => color.toLocaleLowerCase().includes(search)),
+      habitat: search => pokemons.filter(({ habitat }) => habitat.toLocaleLowerCase().includes(search)),
       types: search => {
         return pokemons
           .map(pokemon => {
@@ -83,5 +74,27 @@ export default class PokemonController {
     }
 
     return itemsToFilter[filters.type](filters.search.toLocaleLowerCase())
+  }
+
+  private async getPokemonDetailById(pokemonId: string) {
+    const { data } = await this.PokemonService.getData<DetailApiResponse>(`${POKEMON_URL}/pokemon/${pokemonId}`)
+
+    return detailPokemonDto(data)
+  }
+
+  private async getSpecieById(pokemonId: string) {
+    const { data } = await this.PokemonService.getData<PokemonSpecieResponse>(
+      `${POKEMON_URL}/pokemon-species/${pokemonId}`
+    )
+
+    return specieDto(data)
+  }
+
+  private async getEvolutionPokemon(pokemonId: string) {
+    const { data } = await this.PokemonService.getData<EvolutionPokemonResponse>(
+      `${POKEMON_URL}/evolution-chain/${pokemonId}`
+    )
+
+    return evolutionPokemonDto(data)
   }
 }

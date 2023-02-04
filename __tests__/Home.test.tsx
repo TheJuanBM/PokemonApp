@@ -1,41 +1,24 @@
-import { fireEvent, render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react-native'
+import { fireEvent, render, screen, waitForElementToBeRemoved } from '@testing-library/react-native'
 import mockAxios from 'jest-mock-axios'
 import ImageColors from 'react-native-image-colors'
 
 import Home from '../src/pokemon/ui/views/Home'
-import {
-  mockDetailPokemon,
-  mockDetailPokemonTwo,
-  mockPokemonDataResponse,
-  mockPokemonSpecies,
-  mockPokemonSpeciesTwo
-} from '../__mocks__/pokemonList.mocks'
+import { mockLoadMocks, mockPokemonDataResponse } from '../__mocks__/pokemonList.mocks'
 
-beforeEach(() => {
-  jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(jest.fn))
-})
+beforeEach(() => jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(jest.fn)))
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 afterEach(() => mockAxios.reset())
 
 describe('Test Home', () => {
-  it('Should show pokemon list in home view', async () => {
+  test('Render okay', async () => {
     render(<Home />)
 
     expect(screen.getByTestId('loading')).toBeDefined()
 
     mockAxios.mockResponse({ data: mockPokemonDataResponse })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockDetailPokemon })
-      mockAxios.mockResponse({ data: mockDetailPokemonTwo })
-    })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockPokemonSpecies })
-      mockAxios.mockResponse({ data: mockPokemonSpeciesTwo })
-    })
+    await mockLoadMocks()
 
     await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
 
@@ -43,27 +26,31 @@ describe('Test Home', () => {
 
     expect(screen.getAllByTestId('pokemonList')).toBeDefined()
 
-    expect(screen.getByTestId('separator')).toBeDefined()
+    expect(screen.getAllByTestId('separator')).toHaveLength(2)
 
-    expect(screen.getAllByTestId('card')).toHaveLength(2)
+    expect(screen.getAllByTestId('card')).toHaveLength(3)
   })
 
-  it('Should search pokemon and close browser', async () => {
+  test('Should show empty state', async () => {
     render(<Home />)
 
-    expect(screen.getByTestId('loading')).toBeDefined()
+    mockAxios.mockResponse({ data: mockPokemonDataResponse })
+    await mockLoadMocks()
+
+    await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
+
+    fireEvent.changeText(screen.getByPlaceholderText(/Search you pokemon/i), 'pikachu')
+
+    fireEvent.press(screen.getByTestId('searchButton'))
+
+    expect(screen.getByText(/No results found/i)).toBeDefined()
+  })
+
+  test('Should search pokemon and close browser', async () => {
+    render(<Home />)
 
     mockAxios.mockResponse({ data: mockPokemonDataResponse })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockDetailPokemon })
-      mockAxios.mockResponse({ data: mockDetailPokemonTwo })
-    })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockPokemonSpecies })
-      mockAxios.mockResponse({ data: mockPokemonSpeciesTwo })
-    })
+    await mockLoadMocks()
 
     await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
 
@@ -77,58 +64,43 @@ describe('Test Home', () => {
 
     fireEvent.press(screen.getByTestId('closeButton'))
 
-    expect(screen.getAllByTestId('card')).toHaveLength(2)
+    expect(screen.getAllByTestId('card')).toHaveLength(3)
   })
 
-  test('Should show empty state', async () => {
+  test('Should catch pokemo and remove to list', async () => {
     render(<Home />)
 
-    expect(screen.getByTestId('loading')).toBeDefined()
-
     mockAxios.mockResponse({ data: mockPokemonDataResponse })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockDetailPokemon })
-      mockAxios.mockResponse({ data: mockDetailPokemonTwo })
-    })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockPokemonSpecies })
-      mockAxios.mockResponse({ data: mockPokemonSpeciesTwo })
-    })
+    await mockLoadMocks()
 
     await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
 
-    fireEvent.changeText(screen.getByPlaceholderText(/Search you pokemon/i), 'pikachu')
+    expect(screen.getAllByText('Get')).toHaveLength(3)
+    expect(screen.queryByText('Delete')).toBeNull()
 
-    fireEvent.press(screen.getByTestId('searchButton'))
+    fireEvent.press(screen.getAllByRole('button', { name: /get/i })[0])
 
-    expect(screen.getByText(/No results found/i)).toBeDefined()
+    expect(screen.getByText('Delete')).toBeDefined()
+
+    expect(screen.getAllByText('Get')).toHaveLength(1)
+
+    fireEvent.press(screen.getByText('Delete'))
+
+    expect(screen.getAllByText('Get')).toHaveLength(3)
   })
 
   test.each([
-    ['bug', 'Egg Groups'],
-    ['cave', 'Habitat'],
-    ['yellow', 'Color'],
-    ['fire', 'Types'],
+    ['7', 'Height'],
     ['10', 'Weight'],
-    ['7', 'Height']
-  ])('Should search pokemon by %s whit %s', async (valueSearch, typeSearch) => {
+    ['fire', 'Types'],
+    ['yellow', 'Color'],
+    ['cave', 'Habitat'],
+    ['bug', 'Egg Groups']
+  ])('Should search the pokemons with the %s value by the %s filter', async (valueSearch, typeSearch) => {
     render(<Home />)
 
-    expect(screen.getByTestId('loading')).toBeDefined()
-
     mockAxios.mockResponse({ data: mockPokemonDataResponse })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockDetailPokemon })
-      mockAxios.mockResponse({ data: mockDetailPokemonTwo })
-    })
-
-    await waitFor(() => {
-      mockAxios.mockResponse({ data: mockPokemonSpecies })
-      mockAxios.mockResponse({ data: mockPokemonSpeciesTwo })
-    })
+    await mockLoadMocks()
 
     await waitForElementToBeRemoved(() => screen.getByTestId('loading'))
 

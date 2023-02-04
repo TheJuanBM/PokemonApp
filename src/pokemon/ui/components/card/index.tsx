@@ -1,20 +1,36 @@
-import { Image, ScrollView, Text, View } from 'react-native'
+import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
 import Pokemon from '../../../model/pokemon.model'
-import { useGetDetailController } from './hooks'
+import { CatchPokemonController } from '../../hooks'
+import { useDetailController } from './hooks'
 import { styles } from './styles'
 
 interface CardProps {
   pokemon: Pokemon
+  catchPokemonController: CatchPokemonController
 }
 
-export function Card({ pokemon }: CardProps) {
-  const { bgColor } = useGetDetailController(pokemon.image)
+export function Card({ pokemon, catchPokemonController }: CardProps) {
+  const detailController = useDetailController(pokemon.image)
+
+  const { existPokemonById, handlePokemonsState, existPokemonByEvolutionAndId, existPokemonByType } =
+    catchPokemonController
 
   return (
-    <LinearGradient testID="card" colors={[bgColor.dark, bgColor.light, 'white']} style={{ ...styles.ContainerCard }}>
+    <LinearGradient testID="card" colors={detailController.colors} style={{ ...styles.ContainerCard }}>
       <Image testID="image" style={styles.Image} source={{ uri: pokemon.image }} />
+      <TouchableOpacity
+        accessibilityRole="button"
+        onPress={() => handlePokemonsState(pokemon)}
+        disabled={!existPokemonById(pokemon.id) && existPokemonByEvolutionAndId(pokemon)}
+      >
+        {existPokemonById(pokemon.id) ? (
+          <Text>Delete</Text>
+        ) : !existPokemonByEvolutionAndId(pokemon) && !existPokemonByType(pokemon) ? (
+          <Text>Get</Text>
+        ) : null}
+      </TouchableOpacity>
       <View style={styles.BottomSection}>
         <Text style={styles.Name} numberOfLines={1}>
           {pokemon.name}

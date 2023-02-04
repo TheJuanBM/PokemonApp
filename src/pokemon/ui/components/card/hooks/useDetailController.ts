@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import ImageColors from 'react-native-image-colors'
 
-export function useGetDetailController(image: string) {
+export function useDetailController(pokemonImage: string) {
   const [bgColor, setBgColor] = useState({ light: 'white', dark: 'white' })
 
   const isMounted = useRef(true)
 
   useEffect(() => {
     if (isMounted) {
-      ImageColors.getColors(image, { fallback: 'white' }).then(colors => {
+      ImageColors.getColors(pokemonImage, { fallback: 'white' }).then(colors => {
         if (!isMounted.current) return
 
         if (colors.platform === 'android') {
@@ -20,7 +20,9 @@ export function useGetDetailController(image: string) {
     return () => {
       isMounted.current = false
     }
-  }, [image])
+  }, [pokemonImage])
 
-  return { bgColor }
+  const colors = [bgColor.dark, bgColor.light, 'white']
+
+  return { colors }
 }
