@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useEffect, useState } from 'react'
 
 import Pokemon from '../../model/pokemon.model'
 
@@ -6,6 +7,7 @@ export interface CatchPokemonController {
   capturedPokemons: Pokemon[]
   existPokemonByType(pokemon: Pokemon): boolean
   existPokemonById: (pokemon: string) => boolean
+  handleRemovePokemon: (pokemon: string) => void
   handlePokemonsState: (pokemon: Pokemon) => void
   existPokemonByEvolutionAndId(pokemon: Pokemon): boolean
 }
@@ -44,21 +46,43 @@ export function useCatchPokemonController(): CatchPokemonController {
     )
   }
 
-  function handleCapturePokemon(pokemon: Pokemon) {
-    setCapturedPokemons(prev => [...prev, pokemon])
+  async function handleCapturePokemon(pokemon: Pokemon) {
+    const pokemonList = [...capturedPokemons, pokemon]
+
+    setCapturedPokemons(pokemonList)
+    await setStorageData(pokemonList)
   }
 
-  function handleRemovePokemon(pokemonId: string) {
+  async function handleRemovePokemon(pokemonId: string) {
     const removeItem = capturedPokemons.filter(({ id }) => id !== pokemonId)
 
     setCapturedPokemons(removeItem)
+    await setStorageData(removeItem)
   }
+
+  async function getStorageData() {
+    const storageValue = await AsyncStorage.getItem('pokemonsStorage')
+
+    if (storageValue) {
+      const transformData = JSON.parse(storageValue) as Pokemon[]
+      setCapturedPokemons(transformData)
+    }
+  }
+
+  async function setStorageData(pokemon: Pokemon[]) {
+    await AsyncStorage.setItem('pokemonsStorage', JSON.stringify(pokemon))
+  }
+
+  useEffect(() => {
+    getStorageData()
+  }, [])
 
   return {
     capturedPokemons,
     existPokemonById,
     existPokemonByType,
     handlePokemonsState,
+    handleRemovePokemon,
     existPokemonByEvolutionAndId
   }
 }

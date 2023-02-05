@@ -78,7 +78,7 @@ PODS:
   - hermes-engine (0.70.6)
   - libevent (2.1.12)
   - lottie-ios (3.4.4)
-  - lottie-react-native (5.1.4):
+  - lottie-react-native (5.1.5):
     - lottie-ios (~> 3.4.0)
     - React-Core
   - OpenSSL-Universal (1.1.1100)
@@ -376,7 +376,7 @@ PODS:
     - React-perflogger (= 0.70.6)
   - RNCAsyncStorage (1.17.11):
     - React-Core
-  - RNImageColors (1.5.1):
+  - RNImageColors (1.5.2):
     - React-Core
   - RNSVG (13.8.0):
     - React-Core
@@ -571,7 +571,7 @@ SPEC CHECKSUMS:
   hermes-engine: e86cc2a4cd10ed276799de42ea326bc551115bc7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   lottie-ios: 8f97d3271e155c2d688875c29cd3c74908aef5f8
-  lottie-react-native: b702fab740cdb952a8e2354713d3beda63ff97b0
+  lottie-react-native: 3e722c63015fdb9c27638b0a77969fc412067c18
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: d0b6ce414cf5c3dd63a665c9c550244b86233f35
   RCTRequired: e1866f61af7049eb3d8e08e8b133abd38bc1ca7a
@@ -601,7 +601,7 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: 15437b576139df27635400de0599d9844f1ab817
   ReactCommon: 349be31adeecffc7986a0de875d7fb0dcf4e251c
   RNCAsyncStorage: 8616bd5a58af409453ea4e1b246521bb76578d60
-  RNImageColors: fd9777591fc765780e035f4bec7a42edabc86eb4
+  RNImageColors: 9ac05083b52d5c350e6972650ae3ba0e556466c1
   RNSVG: c1e76b81c76cdcd34b4e1188852892dc280eb902
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 99caf8d5ab45e9d637ee6e0174ec16fbbb01bcfc

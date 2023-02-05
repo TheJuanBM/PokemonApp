@@ -16,7 +16,7 @@ export function Loading({ children }: LoadingProps) {
         autoPlay
         testID="loading"
         style={styles.Loading}
-        source={require('../../assets/pokeballLoading.json')}
+        source={require('../../assets/animations/pokeballLoading.json')}
       />
       <ActivityIndicator style={styles.ActivityIndicator} />
       {children}

@@ -1,0 +1,44 @@
+export const mockPokemons = [
+  {
+    id: '1',
+    color: 'red',
+    name: 'Bulbasaur',
+    image: 'image.png',
+    habitat: 'grassland',
+    generation: 'generation-i',
+    types: ['grass', 'position'],
+    eggGroups: ['monster', 'plant'],
+    height: 5,
+    weight: 17,
+    evolutionPokemon: 'ivysaur',
+    stats: [
+      { label: 'hp', value: 10 },
+      { label: 'speed', value: 20 },
+      { label: 'attack', value: 15 },
+      { label: 'defense', value: 50 },
+      { label: 'special-attack', value: 30 },
+      { label: 'special-defense', value: 40 }
+    ]
+  },
+  {
+    id: '2',
+    color: 'blue',
+    name: 'Ivysaur',
+    image: 'image.png',
+    habitat: 'grassland',
+    generation: 'generation-i',
+    types: ['grass', 'position'],
+    eggGroups: ['monster', 'plant'],
+    height: 5,
+    weight: 17,
+    evolutionPokemon: 'ivysaur',
+    stats: [
+      { label: 'hp', value: 10 },
+      { label: 'speed', value: 20 },
+      { label: 'attack', value: 15 },
+      { label: 'defense', value: 50 },
+      { label: 'special-attack', value: 30 },
+      { label: 'special-defense', value: 40 }
+    ]
+  }
+]

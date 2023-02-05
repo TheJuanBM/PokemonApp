@@ -10,6 +10,10 @@ export default class Pokemon {
   height: number
   types: string[]
   eggGroups: string[]
+  stats: {
+    label: string
+    value: number
+  }[]
 
   constructor(pokemon: Pokemon) {
     this.id = pokemon.id
@@ -17,6 +21,7 @@ export default class Pokemon {
     this.types = pokemon.types
     this.color = pokemon.color
     this.image = pokemon.image
+    this.stats = pokemon.stats
     this.height = pokemon.height
     this.weight = pokemon.weight
     this.habitat = pokemon.habitat

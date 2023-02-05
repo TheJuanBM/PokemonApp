@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { Image, ScrollView, Text, TouchableOpacity, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 
@@ -11,7 +12,7 @@ interface CardProps {
   catchPokemonController: CatchPokemonController
 }
 
-export function Card({ pokemon, catchPokemonController }: CardProps) {
+function Card({ pokemon, catchPokemonController }: CardProps) {
   const detailController = useDetailController(pokemon.image)
 
   const { existPokemonById, handlePokemonsState, existPokemonByEvolutionAndId, existPokemonByType } =
@@ -22,6 +23,7 @@ export function Card({ pokemon, catchPokemonController }: CardProps) {
       <Image testID="image" style={styles.Image} source={{ uri: pokemon.image }} />
       <TouchableOpacity
         accessibilityRole="button"
+        style={styles.CatchPokemon}
         onPress={() => handlePokemonsState(pokemon)}
         disabled={!existPokemonById(pokemon.id) && existPokemonByEvolutionAndId(pokemon)}
       >
@@ -56,3 +58,5 @@ export function Card({ pokemon, catchPokemonController }: CardProps) {
     </LinearGradient>
   )
 }
+
+export default memo(Card)

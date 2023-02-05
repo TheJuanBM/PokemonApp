@@ -12,11 +12,19 @@ export const styles = StyleSheet.create({
     borderRadius: 10,
     shadowRadius: 3.84,
     shadowOpacity: 0.25,
-    shadowOffset: { width: 0, height: 2 }
+    shadowOffset: {
+      width: 0,
+      height: 2
+    }
   },
   Image: {
     width: 300,
     height: 300
+  },
+  CatchPokemon: {
+    height: 20,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   BottomSection: {
     flex: 1,

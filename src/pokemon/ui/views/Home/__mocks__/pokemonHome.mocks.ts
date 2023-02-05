@@ -5,21 +5,45 @@ const mockDetailPokemon = {
   id: 1,
   weight: 9,
   height: 7,
-  types: [{ type: { name: 'fire' } }, { type: { name: 'position' } }]
+  types: [{ type: { name: 'fire' } }, { type: { name: 'position' } }],
+  stats: [
+    { base_stat: 45, stat: { name: 'hp' } },
+    { base_stat: 45, stat: { name: 'speed' } },
+    { base_stat: 49, stat: { name: 'attack' } },
+    { base_stat: 49, stat: { name: 'defense' } },
+    { base_stat: 65, stat: { name: 'special-attack' } },
+    { base_stat: 65, stat: { name: 'special-defense' } }
+  ]
 }
 
 const mockDetailPokemonTwo = {
   id: 2,
   weight: 10,
   height: 8,
-  types: [{ type: { name: 'grass' } }, { type: { name: 'position' } }]
+  types: [{ type: { name: 'grass' } }, { type: { name: 'position' } }],
+  stats: [
+    { base_stat: 45, stat: { name: 'hp' } },
+    { base_stat: 45, stat: { name: 'speed' } },
+    { base_stat: 49, stat: { name: 'attack' } },
+    { base_stat: 49, stat: { name: 'defense' } },
+    { base_stat: 65, stat: { name: 'special-attack' } },
+    { base_stat: 65, stat: { name: 'special-defense' } }
+  ]
 }
 
 const mockDetailPokemonThree = {
   id: 3,
   weight: 11,
   height: 14,
-  types: [{ type: { name: 'normal' } }, { type: { name: 'ghost' } }]
+  types: [{ type: { name: 'normal' } }, { type: { name: 'ghost' } }],
+  stats: [
+    { base_stat: 45, stat: { name: 'hp' } },
+    { base_stat: 45, stat: { name: 'speed' } },
+    { base_stat: 49, stat: { name: 'attack' } },
+    { base_stat: 49, stat: { name: 'defense' } },
+    { base_stat: 65, stat: { name: 'special-attack' } },
+    { base_stat: 65, stat: { name: 'special-defense' } }
+  ]
 }
 
 const mockPokemonSpecies = {

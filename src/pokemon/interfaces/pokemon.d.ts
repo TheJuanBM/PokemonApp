@@ -23,12 +23,20 @@ export interface DetailPokemon {
   weight: number
   height: number
   types: string[]
+  stats: {
+    label: string
+    value: number
+  }[]
 }
 
 export interface DetailApiResponse {
   id: number
   weight: number
   height: number
+  stats: {
+    stat: Name
+    base_stat: number
+  }[]
   types: {
     type: Name
   }[]

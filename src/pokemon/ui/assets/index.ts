@@ -1,7 +1,2 @@
-import Close from './Close.svg'
-import Search from './Search.svg'
-
-export const Icons = {
-  Close,
-  Search
-}
+export * from './animations'
+export * from './svg'

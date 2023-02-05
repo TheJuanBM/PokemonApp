@@ -1,10 +1,14 @@
 import { render, screen } from '@testing-library/react-native'
 import ImageColors from 'react-native-image-colors'
 
-import { Card } from '..'
+import Card from '..'
 import { mockCatchPokemonController, mockGetColors, mockPokemon } from '../__mocks__/pokemonCard.mocks'
 
 beforeEach(() => jest.spyOn(ImageColors, 'getColors').mockReturnValue(new Promise(mockGetColors)))
+
+jest.mock('@react-native-async-storage/async-storage', () =>
+  require('@react-native-async-storage/async-storage/jest/async-storage-mock')
+)
 
 describe('Test Card', () => {
   test('Render okay in android', () => {

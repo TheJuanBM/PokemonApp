@@ -2,7 +2,7 @@ import { FlatList, SafeAreaView, Text, View } from 'react-native'
 
 import { Card, Loading } from '../../components'
 import { usePokemonController } from '../../hooks'
-import { FormSearch } from '../../module'
+import { FormSearch, ModalDetail } from '../../module'
 import { StylesHome } from './styles'
 
 export default function Home() {
@@ -34,6 +34,12 @@ export default function Home() {
           pokemonController.isLoading ? null : <Text style={StylesHome.TextNoFound}>No results found</Text>
         }
       />
+      {!!pokemonController.catchPokemonController.capturedPokemons.length && (
+        <ModalDetail
+          pokemons={pokemonController.catchPokemonController.capturedPokemons}
+          handleRemovePokemon={pokemonController.catchPokemonController.handleRemovePokemon}
+        />
+      )}
     </SafeAreaView>
   )
 }
