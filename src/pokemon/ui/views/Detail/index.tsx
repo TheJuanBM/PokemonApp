@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Text, TouchableOpacity, View } from 'react-native'
+import MapView, { Marker } from 'react-native-maps'
 import Modal from 'react-native-modal'
 import { Bar } from 'react-native-progress'
 
@@ -53,6 +54,20 @@ export function Detail({ pokemon }: DetailProps) {
             </View>
           ))}
           <Text style={styles.Total}>Total: {pokemon.stats.reduce((acc, curr) => curr.value + acc, 0)}</Text>
+          <Text style={styles.Subtitle}>Location</Text>
+          <MapView
+            testID="location"
+            zoomControlEnabled
+            initialRegion={{
+              latitude: 37.78825,
+              longitude: -122.4324,
+              longitudeDelta: 0,
+              latitudeDelta: 0.009
+            }}
+            style={styles.MapContainer}
+          >
+            <Marker draggable coordinate={{ latitude: 37.78825, longitude: -122.4324 }} />
+          </MapView>
         </View>
       </Modal>
     </View>

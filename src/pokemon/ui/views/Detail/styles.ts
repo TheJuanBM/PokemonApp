@@ -7,10 +7,8 @@ export const styles = StyleSheet.create({
     position: 'absolute'
   },
   ModalContainer: {
-    margin: 0,
-    marginLeft: 16,
-    marginRight: 16,
-    marginTop: '85%'
+    margin: 16,
+    marginBottom: 0
   },
   CloseModal: {
     top: 16,
@@ -35,5 +33,8 @@ export const styles = StyleSheet.create({
   Total: {
     marginTop: 7,
     fontWeight: '500'
+  },
+  MapContainer: {
+    flex: 1
   }
 })

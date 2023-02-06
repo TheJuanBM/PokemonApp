@@ -26,6 +26,9 @@ describe('Test Detail', () => {
     expect(screen.getByText(/special-attack 30/i)).toBeDefined()
     expect(screen.getByText(/special-defense 40/i)).toBeDefined()
     expect(screen.getByText(/total: 165/i)).toBeDefined()
+
+    expect(screen.getByText('Location')).toBeDefined()
+    expect(screen.getByTestId('location')).toBeDefined()
   })
 
   test('Should close moda detail', () => {
