@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 
 import Pokemon from '../../../model/pokemon.model'
 import { CatchPokemonController } from '../../hooks'
+import { Detail } from '../../views/Detail'
 import { useDetailController } from './hooks'
 import { styles } from './styles'
 
@@ -19,43 +20,46 @@ function Card({ pokemon, catchPokemonController }: CardProps) {
     catchPokemonController
 
   return (
-    <LinearGradient testID="card" colors={detailController.colors} style={{ ...styles.ContainerCard }}>
-      <Image testID="image" style={styles.Image} source={{ uri: pokemon.image }} />
-      <TouchableOpacity
-        accessibilityRole="button"
-        style={styles.CatchPokemon}
-        onPress={() => handlePokemonsState(pokemon)}
-        disabled={!existPokemonById(pokemon.id) && existPokemonByEvolutionAndId(pokemon)}
-      >
-        {existPokemonById(pokemon.id) ? (
-          <Text>Delete</Text>
-        ) : !existPokemonByEvolutionAndId(pokemon) && !existPokemonByType(pokemon) ? (
-          <Text>Get</Text>
-        ) : null}
-      </TouchableOpacity>
-      <View style={styles.BottomSection}>
-        <Text style={styles.Name} numberOfLines={1}>
-          {pokemon.name}
-        </Text>
-        <View style={styles.TypesContainer}>
-          <Text style={styles.BoldText}>Type: </Text>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {pokemon.types.map(type => (
-              <Text testID="typeItem" style={styles.TypesText} key={type}>
-                {type}
-              </Text>
-            ))}
-          </ScrollView>
-        </View>
-        <View style={styles.TypesContainer}>
-          <Text style={styles.BoldText}>Habitat: </Text>
-          <Text testID="habitatItem" style={styles.TypesText}>
-            {pokemon.habitat}
+    <View>
+      <LinearGradient testID="card" colors={detailController.colors} style={{ ...styles.ContainerCard }}>
+        <Image testID="image" style={styles.Image} source={{ uri: pokemon.image }} />
+        <TouchableOpacity
+          accessibilityRole="button"
+          style={styles.CatchPokemon}
+          onPress={() => handlePokemonsState(pokemon)}
+          disabled={!existPokemonById(pokemon.id) && existPokemonByEvolutionAndId(pokemon)}
+        >
+          {existPokemonById(pokemon.id) ? (
+            <Text>Delete</Text>
+          ) : !existPokemonByEvolutionAndId(pokemon) && !existPokemonByType(pokemon) ? (
+            <Text>Get</Text>
+          ) : null}
+        </TouchableOpacity>
+        <View style={styles.BottomSection}>
+          <Text style={styles.Name} numberOfLines={1}>
+            {pokemon.name}
           </Text>
+          <View style={styles.TypesContainer}>
+            <Text style={styles.BoldText}>Type: </Text>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {pokemon.types.map(type => (
+                <Text testID="typeItem" style={styles.TypesText} key={type}>
+                  {type}
+                </Text>
+              ))}
+            </ScrollView>
+          </View>
+          <View style={styles.TypesContainer}>
+            <Text style={styles.BoldText}>Habitat: </Text>
+            <Text testID="habitatItem" style={styles.TypesText}>
+              {pokemon.habitat}
+            </Text>
+          </View>
+          <Text style={styles.BoldText}>{`\n~ ${pokemon.generation} ~`}</Text>
         </View>
-        <Text style={styles.BoldText}>{`\n~ ${pokemon.generation} ~`}</Text>
-      </View>
-    </LinearGradient>
+      </LinearGradient>
+      <Detail pokemon={pokemon} />
+    </View>
   )
 }
 
