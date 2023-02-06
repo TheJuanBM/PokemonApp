@@ -7,12 +7,12 @@ import { Icons } from '../../assets'
 import { styles } from './styles'
 import { SummarySkills } from './SummarySkills'
 
-export interface ModalDetailProps {
+export interface CollectionProps {
   pokemons: Pokemon[]
   handleRemovePokemon: (pokemonId: string) => void
 }
 
-export function ModalDetail({ pokemons, handleRemovePokemon }: ModalDetailProps) {
+export function Collection({ pokemons, handleRemovePokemon }: CollectionProps) {
   const [isModalVisible, setModalVisible] = useState(false)
 
   const toggleModal = () => setModalVisible(!isModalVisible)

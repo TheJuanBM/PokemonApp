@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react-native'
 
-import { ModalDetail } from '../src/pokemon/ui/module'
-import { mockPokemons } from '../__mocks__/modalDetail.mocks'
+import { Collection } from '../src/pokemon/ui/views/Collection'
+import { mockPokemons } from '../__mocks__/collectionDetail.mocks'
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
@@ -10,9 +10,9 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 )
 
 // TODO: Implement case of removing pokemon
-describe('Test Detail', () => {
+describe('Test Collection', () => {
   test('Render okay', () => {
-    render(<ModalDetail pokemons={mockPokemons} handleRemovePokemon={jest.fn} />)
+    render(<Collection pokemons={mockPokemons} handleRemovePokemon={jest.fn} />)
 
     fireEvent.press(screen.getByTestId('openModal'))
 
