@@ -14,6 +14,10 @@ export function useDetailController(pokemonImage: string) {
         if (colors.platform === 'android') {
           setBgColor({ light: colors.lightMuted || 'white', dark: colors.dominant || 'white' })
         }
+
+        if (colors.platform === 'ios') {
+          setBgColor({ light: colors.background || 'white', dark: colors.secondary || 'white' })
+        }
       })
     }
 

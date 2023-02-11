@@ -9,14 +9,19 @@ export const styles = (isText: boolean) => {
     From: {
       flex: 1,
       height: 40,
+      elevation: 5,
+      shadowRadius: 3.84,
+      shadowOpacity: 0.25,
+      shadowOffset: { width: 0, height: 2 },
+      shadowColor: 'black',
       flexDirection: 'row'
     },
     CollectionBtn: {
       width: 40,
       height: 40,
-      elevation: 10,
-      borderTopEndRadius: 10,
-      borderBottomEndRadius: 10,
+      elevation: 5,
+      marginLeft: 10,
+      borderRadius: 10,
       alignItems: 'center',
       justifyContent: 'center',
       backgroundColor: 'white'

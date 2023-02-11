@@ -6,18 +6,25 @@ export const styles = StyleSheet.create({
     right: 16,
     position: 'absolute'
   },
+  DetailBtn: {
+    borderRadius: 10,
+    paddingVertical: 2,
+    paddingHorizontal: 7,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)'
+  },
   ModalContainer: {
     margin: 16,
-    marginBottom: 0
+    marginBottom: 0,
+    justifyContent: 'flex-end'
   },
   CloseModal: {
-    top: 16,
+    top: 0,
+    right: 0,
     zIndex: 1,
-    right: 16,
     position: 'absolute'
   },
   WrapperDetail: {
-    flex: 1,
+    height: '90%',
     padding: 16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
@@ -25,7 +32,6 @@ export const styles = StyleSheet.create({
   },
   Subtitle: {
     fontSize: 15,
-    marginTop: 10,
     marginBottom: 3,
     color: 'black',
     fontWeight: '600'
@@ -35,6 +41,10 @@ export const styles = StyleSheet.create({
     fontWeight: '500'
   },
   MapContainer: {
-    flex: 1
+    flex: 1,
+    minHeight: 200
+  },
+  Separator: {
+    paddingVertical: 10
   }
 })

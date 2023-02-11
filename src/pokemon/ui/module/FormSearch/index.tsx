@@ -24,8 +24,8 @@ export function FormSearch({ ...props }: FormSearchProps) {
         <InputSearch value={formSearch.values.search} onChangeText={formSearch.handleChangeText} />
         <TouchableOpacity
           activeOpacity={0.7}
-          style={stylesWhitParam.CollectionBtn}
           onPress={formSearch.onSubmit}
+          style={stylesWhitParam.CollectionBtn}
           disabled={!props.isSearching ? formSearch.isText : false}
         >
           {!props.isSearching ? (
