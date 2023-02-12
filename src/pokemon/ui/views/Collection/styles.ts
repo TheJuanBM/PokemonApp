@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
   },
   TitlePokeBall: {
     fontSize: 17,
-    color: 'black',
+    color: '#000000',
     fontWeight: '600',
     textAlign: 'center'
   },
@@ -71,10 +71,11 @@ export const styles = StyleSheet.create({
   },
   SummaryTitle: {
     fontSize: 18,
-    color: 'black',
+    color: '#000000',
     fontWeight: '600'
   },
   SummaryItem: {
-    marginTop: 4
+    marginTop: 4,
+    color: '#000000'
   }
 })

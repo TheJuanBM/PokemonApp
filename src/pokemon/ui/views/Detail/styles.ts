@@ -33,11 +33,12 @@ export const styles = StyleSheet.create({
   Subtitle: {
     fontSize: 15,
     marginBottom: 3,
-    color: 'black',
+    color: '#000000',
     fontWeight: '600'
   },
   Total: {
     marginTop: 7,
+    color: '#000000',
     fontWeight: '500'
   },
   MapContainer: {
@@ -46,5 +47,8 @@ export const styles = StyleSheet.create({
   },
   Separator: {
     paddingVertical: 10
+  },
+  TextDetail: {
+    color: '#000000'
   }
 })

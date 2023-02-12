@@ -1,5 +1,4 @@
-package com.pokemonapp;
-
+package com.technicaltestbewejuanbedoya.pokemonapp;
 
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 
@@ -12,7 +11,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.config.ReactFeatureFlags;
 import com.facebook.soloader.SoLoader;
-import com.pokemonapp.newarchitecture.MainApplicationReactNativeHost;
+import com.technicaltestbewejuanbedoya.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 

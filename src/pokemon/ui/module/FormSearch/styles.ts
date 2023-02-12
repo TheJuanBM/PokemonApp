@@ -13,7 +13,7 @@ export const styles = (isText: boolean) => {
       shadowRadius: 3.84,
       shadowOpacity: 0.25,
       shadowOffset: { width: 0, height: 2 },
-      shadowColor: 'black',
+      shadowcolor: '#000000',
       flexDirection: 'row'
     },
     CollectionBtn: {

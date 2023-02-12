@@ -1,4 +1,4 @@
-package com.pokemonapp.newarchitecture;
+package com.technicaltestbewejuanbedoya.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,7 +19,7 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.pokemonapp.BuildConfig;
+import com.technicaltestbewejuanbedoya.pokemonapp.BuildConfig;
 import com.pokemonapp.newarchitecture.components.MainComponentsRegistry;
 import com.pokemonapp.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;

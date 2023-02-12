@@ -13,7 +13,8 @@
     "build-android-dev": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "release-apk-dev": "cd android && ./gradlew clean assembleRelease && cd ..",
     "debug-apk-dev": "cd android && ./gradlew clean assembleDebug && cd ..",
-    "generate-apk-dev": "npm run build-android-dev && npm run release-apk-dev"
+    "generate-apk-dev": "npm run build-android-dev && npm run release-apk-dev",
+    "bundle-release": "cd android && ./gradlew bundleRelease && cd .."
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.11",

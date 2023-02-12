@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   ContainerCard: {
     display: 'flex',
-    shadowColor: 'black',
+    shadowcolor: '#000000',
     borderStyle: 'solid',
     alignItems: 'center',
     backgroundColor: 'white',
@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
   },
   Name: {
     fontSize: 18,
-    color: 'black',
+    color: '#000000',
     fontWeight: '600',
     textTransform: 'capitalize'
   },
@@ -48,14 +48,14 @@ export const styles = StyleSheet.create({
     borderRadius: 50,
     paddingVertical: 3,
     paddingHorizontal: 10,
-    color: 'black',
+    color: '#000000',
     fontWeight: '400',
     textAlign: 'center',
     textTransform: 'capitalize',
     backgroundColor: 'rgba(0, 0, 0, 0.07)'
   },
   BoldText: {
-    color: 'black',
+    color: '#000000',
     fontWeight: '600',
     textTransform: 'capitalize'
   }

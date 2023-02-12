@@ -1,4 +1,4 @@
-package com.pokemonapp;
+package com.technicaltestbewejuanbedoya.pokemonapp;
 
 import android.os.Bundle;
 

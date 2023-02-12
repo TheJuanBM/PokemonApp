@@ -20,7 +20,7 @@ export function Detail({ pokemon }: DetailProps) {
   return (
     <View style={styles.Container}>
       <TouchableOpacity style={styles.DetailBtn} testID="openModalDetail" onPress={toggleModal}>
-        <Text>Detail</Text>
+        <Text style={styles.TextDetail}>Detail</Text>
       </TouchableOpacity>
       <Modal
         animationIn="bounceInUp"
@@ -36,20 +36,20 @@ export function Detail({ pokemon }: DetailProps) {
               <Icons.Close width={16} />
             </TouchableOpacity>
             <Text style={styles.Subtitle}>Details</Text>
-            <Text>Name: {pokemon.name}</Text>
-            <Text>Region: {pokemon.habitat}</Text>
-            <Text>
+            <Text style={styles.TextDetail}>Name: {pokemon.name}</Text>
+            <Text style={styles.TextDetail}>Region: {pokemon.habitat}</Text>
+            <Text style={styles.TextDetail}>
               Types:{' '}
               {pokemon.types.map(type => (
                 <Text key={type}>{type} </Text>
               ))}
             </Text>
-            <Text>Generation: {pokemon.generation}</Text>
+            <Text style={styles.TextDetail}>Generation: {pokemon.generation}</Text>
             <View style={styles.Separator} />
             <Text style={styles.Subtitle}>Statistics</Text>
             {pokemon.stats.map(item => (
               <View key={item.label}>
-                <Text>
+                <Text style={styles.TextDetail}>
                   {item.label} {item.value}
                 </Text>
                 <Bar progress={item.value / 100} width={200} />
