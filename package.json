@@ -13,7 +13,7 @@
     "build-android-dev": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "release-apk-dev": "cd android && ./gradlew clean assembleRelease && cd ..",
     "debug-apk-dev": "cd android && ./gradlew clean assembleDebug && cd ..",
-    "generate-apk-dev": "npm run build-android-dev && npm run debug-apk-dev"
+    "generate-apk-dev": "npm run build-android-dev && npm run release-apk-dev"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.17.11",
@@ -26,6 +26,7 @@
     "react-native-maps": "1.0.0",
     "react-native-modal": "^13.0.1",
     "react-native-progress": "^5.0.0",
+    "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^13.8.0"
   },
   "devDependencies": {
