@@ -1,9 +1,28 @@
 import { fireEvent, render, screen } from '@testing-library/react-native'
+import { ReactPortal } from 'react'
 
 import { Detail } from '../src/pokemon/ui/views/Detail'
 import { mockPokemon } from '../__mocks__/pokemon.mocks'
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
+jest.mock('react-native-maps', () => {
+  const { View } = require('react-native')
+
+  function MockMapView({ children }: ReactPortal) {
+    return <View>{children}</View>
+  }
+
+  function MockMarker({ children }: ReactPortal) {
+    return <View>{children}</View>
+  }
+
+  return {
+    __esModule: true,
+    Marker: MockMarker,
+    default: MockMapView
+  }
+})
 
 describe('Test Detail', () => {
   test('Render okay', () => {
@@ -28,7 +47,7 @@ describe('Test Detail', () => {
     expect(screen.getByText(/total: 165/i)).toBeDefined()
 
     expect(screen.getByText('Location')).toBeDefined()
-    expect(screen.getByTestId('location')).toBeDefined()
+    expect(screen.findByTestId('location')).toBeDefined()
   })
 
   test('Should close moda detail', () => {
