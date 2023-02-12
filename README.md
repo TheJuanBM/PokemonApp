@@ -1,5 +1,7 @@
 ##### Prerrequisitos
 
+Asegúrese de haber configurado React Native en su máquina correctamente https://reactnative.dev/docs/environment-setupna
+
 `node: v16.13.2`
 
 `npm: v9.4.0`
