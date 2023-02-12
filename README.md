@@ -33,6 +33,10 @@ Luego abrir el proyecto con Android Studio e instalar los SDK necesarios
 <img width="500" alt="pokeball" src="./doc/android-sdk-platforms.png">
 <img width="500" alt="pokeball" src="./doc/android-sdk-tools.png">
 
+No olvide crear su emulador
+
+<img width="500" alt="pokeball" src="./doc/emulator.png">
+
 ### IOS
 
 De igual manera instale los pods con `cd ios && pod install && cd ..` y abra el proyecto en Xcode
