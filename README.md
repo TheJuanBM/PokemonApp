@@ -54,4 +54,4 @@ Para M1: `cd ios && arch -x86_64 pod install && cd ..`
 Ejecute el comando `npm run generate-apk-dev`. Esto generará una apk en modo release en
 `/android/app/build/outputs/apk/release/app-release.apk`
 
-### Cualquier duda enviar un corre a <a href = "mailto: juanpims09@gmail.com">juanpims09@gmail.com</a>
+### Cualquier duda enviar un correo a <a href = "mailto: juanpims09@gmail.com">juanpims09@gmail.com</a>
