@@ -10,7 +10,7 @@ Prueba técnica para desarrollador React Native en [Bewe](https://www.bewe.io/)
 <img width="300" alt="pokeball" src="https://www.svgrepo.com/show/276264/pokeball-pokemon.svg">
 
 Esta prueba está hecha en React Native CLI. Asegúrese de haber configurado
-[React Native](https://reactnative.dev/docs/environment-setupna) correctamente en su máquina.
+[React Native](https://reactnative.dev/docs/environment-setup) correctamente en su máquina.
 
 ## Instalar proyecto
 
@@ -26,10 +26,14 @@ Yarn
 yarn add
 ```
 
+### Android
+
 Luego abrir el proyecto con Android Studio e instalar los SDK necesarios
 
 <img width="500" alt="pokeball" src="./doc/android-sdk-platforms.png">
 <img width="500" alt="pokeball" src="./doc/android-sdk-tools.png">
+
+### IOS
 
 De igual manera instale los pods con `cd ios && pod install && cd ..` y abra el proyecto en Xcode
 `/ios/Pokemon.xcworkspace`
