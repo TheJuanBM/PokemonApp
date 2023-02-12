@@ -11,6 +11,7 @@ export const StylesHome = StyleSheet.create({
     paddingHorizontal: 16
   },
   TextNoFound: {
+    color: '#000000',
     textAlign: 'center'
   },
   ItemSeparatorComponent: {
