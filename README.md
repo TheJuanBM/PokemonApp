@@ -72,7 +72,7 @@ Ejecute el comando `npm run generate-apk-dev`. Esto generará una apk en modo re
 
 ## Descargar APK
 
-Pueden descargar el apk release desde [mega](https://mega.nz/file/NRkEBBAA#k_jkavYKhN1zxNBDStde0TqUIXVwy3bAGDorF5CRnpU)
+Pueden descargar el apk [release](https://github.com/TheJuanBM/PokemonApp/releases/tag/Pok%C3%A9mon)
 
 ## Contacto
 
