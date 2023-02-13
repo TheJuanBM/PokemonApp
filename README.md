@@ -1,11 +1,11 @@
 # Pokemon React Native
 
-Prueba técnica para desarrollador React Native en [Bewe](https://www.bewe.io/)
-
-[![npm: v9.3.1](https://img.shields.io/badge/npm-v9.3.1-blue)](https://www.npmjs.com/package/npm/v/9.3.1)
 [![node: v16.13.2](https://img.shields.io/badge/node-v16.13.2-orange)](https://nodejs.org/de/blog/release/v16.13.2/)
+[![npm: v9.3.1](https://img.shields.io/badge/npm-v9.3.1-blue)](https://www.npmjs.com/package/npm/v/9.3.1)
 [![ruby: v2.7.5](https://img.shields.io/badge/ruby-v2.7.5-red)](https://www.ruby-lang.org/en/news/2021/11/24/ruby-2-7-5-released/)
 [![cocoapods: v1.11.3](https://img.shields.io/badge/cocoapods-v1.11.3-brightgreen)](https://rubygems.org/gems/cocoapods/versions/1.11.3)
+
+Prueba técnica para desarrollador React Native en [Bewe](https://www.bewe.io/)
 
 <img width="300" alt="pokeball" src="https://www.svgrepo.com/show/276264/pokeball-pokemon.svg">
 
@@ -39,7 +39,7 @@ No olvide crear su emulador
 
 ### IOS
 
-De igual manera instale los pods con `cd ios && pod install && cd ..` y abra el proyecto en Xcode
+De igual manera instale los pods con `npx pod install` o `cd ios && pod install && cd ..` y abra el proyecto en Xcode
 `/ios/Pokemon.xcworkspace`
 
 Para M1: `cd ios && arch -x86_64 pod install && cd ..`
@@ -60,7 +60,7 @@ Ejecute el comando `npm run generate-apk-dev`. Esto generará una apk en modo re
 
 ## Descargar APK
 
-Pueden descargar el apk desde [mega](https://mega.nz/file/NRkEBBAA#k_jkavYKhN1zxNBDStde0TqUIXVwy3bAGDorF5CRnpU)
+Pueden descargar el apk release desde [mega](https://mega.nz/file/NRkEBBAA#k_jkavYKhN1zxNBDStde0TqUIXVwy3bAGDorF5CRnpU)
 
 ## Contacto
 
