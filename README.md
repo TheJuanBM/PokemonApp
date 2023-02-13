@@ -14,6 +14,12 @@ Esta prueba está hecha en React Native CLI. Asegúrese de haber configurado
 
 ## Instalar proyecto
 
+---
+
+**Nota:** Si está utilizando `nvm` ejecute `nvm use`. Esto hará uso del archivo `.nvmrc`
+
+---
+
 npm
 
 ```sh
@@ -38,6 +44,12 @@ No olvide crear su emulador
 <img width="500" alt="pokeball" src="./doc/emulator.png">
 
 ### IOS
+
+---
+
+**Nota:** Si está utilizando `rvm` ejecute `rvm rvmrc to .ruby-version`. Esto hará uso del archivo `.rvmrc`
+
+---
 
 De igual manera instale los pods con `npx pod install` o `cd ios && pod install && cd ..` y abra el proyecto en Xcode
 `/ios/Pokemon.xcworkspace`
