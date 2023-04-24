@@ -5,8 +5,6 @@
 [![ruby: v2.7.5](https://img.shields.io/badge/ruby-v2.7.5-red)](https://www.ruby-lang.org/en/news/2021/11/24/ruby-2-7-5-released/)
 [![cocoapods: v1.11.3](https://img.shields.io/badge/cocoapods-v1.11.3-brightgreen)](https://rubygems.org/gems/cocoapods/versions/1.11.3)
 
-Prueba técnica para desarrollador React Native en [Bewe](https://www.bewe.io/)
-
 <img width="300" alt="pokeball" src="https://www.svgrepo.com/show/276264/pokeball-pokemon.svg">
 
 Esta prueba está hecha en React Native CLI. Asegúrese de haber configurado
