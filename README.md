@@ -7,7 +7,7 @@
 
 <img width="300" alt="pokeball" src="https://www.svgrepo.com/show/276264/pokeball-pokemon.svg">
 
-Esta prueba está hecha en React Native CLI. Asegúrese de haber configurado
+Este proyecto está hecho en React Native CLI. Asegúrese de haber configurado
 [React Native](https://reactnative.dev/docs/environment-setup) correctamente en su máquina.
 
 ## Instalar proyecto
